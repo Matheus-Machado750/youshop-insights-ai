@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="resultado_container">
+
+    <div class="resultado_atual">
+
+        <h2 class="titulo_resultado">
+            Resultados - {{ analise_atual.produto }}
+        </h2>
+
+        <div class="painel_metricas">
+
+            <div class="card_metrica">
+                <p class="metrica_nome">Taxa de conversão</p>
+                <h3 class="metrica_valor">{{ analise_atual.taxa_conversao }}%</h3>
+                <p class="metrica_status {{ analise_atual.classe_conversao }}">
+                    {{ analise_atual.status_conversao }}
+                </p>
+            </div>
+
+            <div class="card_metrica">
+                <p class="metrica_nome">Faturamento</p>
+                <h3 class="metrica_valor">R${{ analise_atual.faturamento }}</h3>
+                <p class="metrica_status">
+                    {{ analise_atual.vendas }} vendas × R${{ analise_atual.preco }}
+                </p>
+            </div>
+
+            <div class="card_metrica">
+                <p class="metrica_nome">Origem do Tráfego</p>
+                <h3 class="metrica_valor">{{ analise_atual.origem }}</h3>
+                <p class="metrica_status">
+                    {{ analise_atual.visitas }} visitas
+                </p>
+            </div>
+
+        </div>
+
+        <div class="painel_ia">
+
+            <div class="cabecalho_ia">
+                <span class="selo_ia">IA Insight</span>
+                <h3>Análise gerada automaticamente</h3>
+            </div>
+
+            <div class="cards_insights">
+
+                <div class="card_insight">
+                    <h4>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Pontos Fortes
+                    </h4>
+
+                    <p>
+                        {{ analise_atual.pontos_fortes }}
+                    </p>
+                </div>
+
+                <div class="card_insight">
+                    <h4>
+                        <i class="fa-solid fa-bolt"></i>
+                        Recomendações
+                    </h4>
+
+                    <p>
+                        {{ analise_atual.recomendacoes }}
+                    </p>
+                </div>
+
+                <div class="card_insight">
+                    <h4>
+                        <i class="fa-solid fa-bullseye"></i>
+                        Otimizações
+                    </h4>
+
+                    <p>
+                        {{ analise_atual.otimizacoes }}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="historico_analises">
+
+        <h2 class="historico_titulo">Histórico de análises</h2>
+
+        <div class="lista_historico">
+
+            {% for analise in historico %}
+
+                <a href="{{ url_for('resultado_por_id', id=analise.id) }}" class="item_historico">
+
+                    <div class="historico_esquerda">
+                        <h3>{{ analise.produto }}</h3>
+                        <p>{{ analise.origem }} | {{ analise.visitas }} visitas</p>
+                    </div>
+
+                    <div class="historico_direita">
+                        <h3>{{ analise.taxa_conversao }}%</h3>
+                        <p>R$ {{ analise.faturamento }}</p>
+                    </div>
+
+                </a>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

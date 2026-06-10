@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="home_container">
+
+    <div class="home_topo">
+
+        <div class="home_esquerda">
+
+            <h2 class="home_titulo">
+                <span class="titulo_home_azul">Gere Insights eficientes com o</span>
+                <span class="titulo_home_verde">YouShop Insights AI</span>
+            </h2>
+
+            <p class="home_descricao">
+                O YouShop Insights AI é uma ferramenta criada para ajudar pequenos
+                empreendedores a transformar dados simples de vendas, visitas e origem
+                de tráfego em recomendações práticas. A proposta é mostrar, de forma
+                rápida e visual, onde o negócio está performando bem, quais pontos
+                precisam de atenção e quais ações podem gerar melhores resultados.
+            </p>
+
+        </div>
+
+        <div class="home_direita">
+
+            <form class="form_insights" action="{{ url_for('resultado') }}" method="POST">
+
+                <div class="campo_formulario">
+                    <label for="produto">Produto :</label>
+                    <input type="text" id="produto" name="produto" placeholder="Insira o nome do seu produto" required>
+                </div>
+
+                <div class="campo_formulario">
+                    <label for="visitas">Visitas :</label>
+                    <input type="number" id="visitas" name="visitas" placeholder="Insira a quantidade de visitas" required>
+                </div>
+
+                <div class="campo_formulario">
+                    <label for="preco">Preço :</label>
+                    <input type="number" id="preco" name="preco" step="0.01" placeholder="Insira o preço do produto" required>
+                </div>
+
+                <div class="campo_formulario">
+                    <label for="vendas">Vendas :</label>
+                    <input type="number" id="vendas" name="vendas" placeholder="Insira a quantidade de vendas" required>
+                </div>
+
+                <div class="campo_formulario">
+                    <label for="origem">Origem :</label>
+                    <input type="text" id="origem" name="origem" placeholder="Insira a origem do tráfego" required>
+                </div>
+
+                <button class="botao_gerar_insights" type="submit">
+                    Gerar Insights
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="home_centro">
+
+        <img src="{{ url_for('static', filename='images/fluxo_sistema.png') }}" alt="Imagem do fluxo de funcionamento do sistema">
+
+        <div class="texto_fluxo_sistema">
+
+            <p>
+                <span class="etapa_sistema">Etapa 1 :</span>
+                 O empreendedor preenche o formulário com dados essenciais do produto, como nome,
+                quantidade de visitas, preço, vendas realizadas e origem do tráfego. Essa etapa
+                organiza as informações mais importantes do negócio em uma entrada simples, direta
+                e fácil de entender.
+            </p>
+
+            <p>
+                <span class="etapa_sistema">Etapa 2 :</span>
+                 Os dados são enviados para o back-end em Python, onde podem ser armazenados no banco
+                de dados e analisados com apoio da API Google Gemini Flash. O sistema combina cálculos
+                objetivos, como faturamento e conversão, com inteligência artificial para transformar
+                métricas brutas em leitura estratégica.
+            </p>
+
+            <p>
+                <span class="etapa_sistema">Etapa 3 :</span>
+                 Os resultados são exibidos na página de insights, mostrando indicadores, pontos fortes,
+                recomendações e oportunidades de otimização. Assim, pequenos empreendedores conseguem
+                tomar decisões mais claras sobre vendas, tráfego, conversão e crescimento do produto.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

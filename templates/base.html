@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouShop Insights AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!--BARRA DE NAVEGAÇÃO-------------------------------------------------------------->
+
+    <nav class="nav_bar">
+
+        <div class="nav_esquerda">
+
+            <img class="youshop_logo" src="{{ url_for('static', filename='images/logo_youshop.png') }}" alt="logo da YouShop">
+            <h2 class="titulo_youshop"> YOUSHOP </h2>
+            <h2 class="titulo_insights"> INSIGHTS </h2>
+
+        </div>
+
+        <div class="nav_direita">
+
+            <a href="{{ url_for('home') }}" class="{% if request.path == url_for('home') %}nav_ativo{% endif %}"> Home </a>
+
+            <a href="{{ url_for('resultado') }}" class="{% if request.path.startswith(url_for('resultado')) %}nav_ativo{% endif %}"> Resultados </a>
+
+            <a href="#" title="Login" class="login"> <i class="fa-solid fa-user"></i></a>
+
+            <button class="botao_registro"> Registre-se </button>
+
+        </div>
+
+    </nav>
+
+<!--SESSÃO PRINCIPAL-------------------------------------------------------------->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+<!--RODAPÉ-------------------------------------------------------------->
+
+    <footer>
+
+        <div class="faixa_footer"> 
+        </div>
+
+        <div class="footer_conteudo">
+
+            <div class="youshop_logo_footer">
+                <img src="{{ url_for('static', filename='images/logo_branca_youshop.png') }}" alt="logo da YouShop">
+            </div>
+
+            <div class="texto_footer">
+
+                <p> YOUSHOP TECNOLOGIA, SERVIÇOS E PAGAMENTOS LTDA | CNPJ: 24.626.884/0001-52 </p>
+
+            </div>
+
+            <div class="redes_sociais">
+
+                <a href="https://www.instagram.com/youshop/" title="Instagram" target="_blank"> <i class="fa-brands fa-instagram"></i> </a>
+                <a href="https://www.linkedin.com/company/youshop-brasil/posts/?feedView=all" title="Linkedln" target="_blank"> <i class="fa-brands fa-linkedin"></i> </a>
+                <a href="https://www.tiktok.com/@youshop" title="TikTok" target="_blank"> <i class="fa-brands fa-tiktok"></i> </a>
+                <a href="https://www.youtube.com/@YouShop-BR" title="Youtube" target="_blank"> <i class="fa-brands fa-youtube"></i> </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
+
+</body>
+
+</html>
