@@ -90,7 +90,7 @@ youshop-insights-ai/
 
 ## Observação sobre a API
 
-> [!CAUTION]
+> [!WARNING]
 > A geração dos insights depende da API gratuita do Google Gemini. Por isso, podem existir limites de requisições em um curto período de tempo. Caso muitos testes sejam feitos em sequência, a geração automática de insights pode apresentar instabilidade temporária ou retornar uma resposta alternativa do sistema.
 
 ---
